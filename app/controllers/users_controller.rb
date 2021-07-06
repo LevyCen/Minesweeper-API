@@ -17,8 +17,6 @@ class UsersController < ApplicationController
     #GET /users
     def index
         @users = User.order('created_at')
-        #render json: @users, status: :ok
-        byebug
         render json: {
             status: 'successful',
             message: 'all user',
