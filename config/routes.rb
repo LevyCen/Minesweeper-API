@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   post '/newgame', to: 'my_boards#create'
   delete '/myboards', to: 'my_boards#destroy'
   
+  post 'box/open', to: 'squares#open_box'
+  
 end
