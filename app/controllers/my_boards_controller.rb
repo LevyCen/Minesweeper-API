@@ -2,9 +2,9 @@ require "byebug"
 
 class MyBoardsController < ApplicationController
 
-    # rescue_from Exception do |e|
-    #     render json: {error: e.message}, status: :internal_server_error
-    # end
+    rescue_from Exception do |e|
+        render json: {error: e.message}, status: :internal_server_error
+    end
   
     rescue_from ActiveRecord::RecordInvalid do |e|
         render json: {error: e.message}, status: :unprocessable_entity
@@ -21,7 +21,7 @@ class MyBoardsController < ApplicationController
         render json:@my_boards, status: :ok
     end
 
-    #POST /myboards
+    #POST /newgame
     def create
         @my_board = Board.new(board_params)
         if @my_board.save
@@ -32,8 +32,13 @@ class MyBoardsController < ApplicationController
             add_mines(@my_board.id,@my_board.mines,)
 
             set_squares_values(@my_board)
+            
+            
+            @squares_board = Square.where(board_id: @my_board.id)
 
-            render json:@my_board, status: :ok
+
+            render json:@squares_board, status: :ok
+
         else
             render json:@my_board.errors, status: :unprocessable_entity
         end

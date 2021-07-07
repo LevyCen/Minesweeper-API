@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create, :destroy]
 
   get '/myboards/:id', to: 'my_boards#show'
-  post '/myboards', to: 'my_boards#create'
+  post '/newgame', to: 'my_boards#create'
   delete '/myboards', to: 'my_boards#destroy'
   
 end
