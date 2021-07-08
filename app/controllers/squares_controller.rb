@@ -1,4 +1,3 @@
-require "byebug"
 class SquaresController < ApplicationController
 
     rescue_from Exception do |e|
@@ -69,10 +68,8 @@ class SquaresController < ApplicationController
                     value_zero_list[array_position].update({"open"=>true})
                     coordinates_list = CoordinatesService.get_coordinates_arround(my_board.height, my_board.width, value_zero_list[array_position].row, value_zero_list[array_position].column)
 
-                    byebug
 
                     for value in 0..coordinates_list.size-1 do
-                        byebug
                         if my_boards_squares.where(row: coordinates_list[value][0], column: coordinates_list[value][1]).first.value > 0
                             # open box
                             unless my_boards_squares.where(row: coordinates_list[value][0], column: coordinates_list[value][1]).first.open
@@ -88,7 +85,6 @@ class SquaresController < ApplicationController
                         end                   
                     end
                     array_position += 1
-                    byebug
                 end
                 
 

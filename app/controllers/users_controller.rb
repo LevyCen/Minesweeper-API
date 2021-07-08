@@ -1,5 +1,3 @@
-require "byebug"
-
 class UsersController < ApplicationController
 
     rescue_from Exception do |e|

@@ -1,5 +1,3 @@
-require "byebug"
-
 class MyBoardsController < ApplicationController
 
     rescue_from Exception do |e|
