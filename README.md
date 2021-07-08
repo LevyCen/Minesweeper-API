@@ -88,7 +88,7 @@ Examples to consume the REST API
 
 ### Response
 
-Get status about all box from board
+Get status about all boxes from board
 
     HTTP/1.1 200 OK
     Server: Cowboy
