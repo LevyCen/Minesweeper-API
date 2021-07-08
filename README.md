@@ -13,6 +13,11 @@ This is a REST API for the minesweeper game
 * Start a new game and preserve / resume old ones.
 * Select game parameters: number of rows, columns and mines.
 
+## Entity relation diagram
+
+![Entity relation diagram](https://raw.githubusercontent.com/LevyCen/Minesweeper-API/master/image/entity_relationship_diagram.jpg)
+ 
+
 # REST API
 Examples to consume the REST API
 
