@@ -1,9 +1,9 @@
 require "byebug"
 class SquaresController < ApplicationController
 
-    # rescue_from Exception do |e|
-    #     render json: {error: e.message}, status: :internal_server_error
-    # end
+    rescue_from Exception do |e|
+        render json: {error: e.message}, status: :internal_server_error
+    end
   
     rescue_from ActiveRecord::RecordInvalid do |e|
         render json: {error: e.message}, status: :unprocessable_entity
@@ -58,8 +58,39 @@ class SquaresController < ApplicationController
                 
             elsif my_boards_squares.where(row: params[:row], column: params[:column]).first.value = 0
                 # si no, las coordenadas son de una caja con valor = 0 ? si son. abrimos la caja 
-                # y abrimos las cajas de al rededor con valor mayor a 0, 
-                # si hay otra caja con valor=0 ejecutar el mismo procimiento
+                # y abrimos las cajas de al rededor con valor mayor a 0,
+                my_board = Board.find(params[:board_id]) 
+                value_zero_list = Array.new()
+                value_zero_list.push(my_boards_squares.where(row: params[:row], column: params[:column]).first)
+                array_position = 0
+                
+                while array_position < value_zero_list.size do
+                    
+                    value_zero_list[array_position].update({"open"=>true})
+                    coordinates_list = CoordinatesService.get_coordinates_arround(my_board.height, my_board.width, value_zero_list[array_position].row, value_zero_list[array_position].column)
+
+                    byebug
+
+                    for value in 0..coordinates_list.size-1 do
+                        byebug
+                        if my_boards_squares.where(row: coordinates_list[value][0], column: coordinates_list[value][1]).first.value > 0
+                            # open box
+                            unless my_boards_squares.where(row: coordinates_list[value][0], column: coordinates_list[value][1]).first.open
+                                my_boards_squares.where(row: coordinates_list[value][0], column: coordinates_list[value][1]).first.update({"open"=>true})
+                            end
+                        else
+                            # save news box with value = 0
+                            # if there are another box whit value = 0 then, apply the same procedure
+                            unless my_boards_squares.where(row: coordinates_list[value][0], column: coordinates_list[value][1]).first.open
+                                my_boards_squares.where(row: coordinates_list[value][0], column: coordinates_list[value][1]).first.update({"open"=>true})
+                                value_zero_list.push(my_boards_squares.where(row: coordinates_list[value][0], column: coordinates_list[value][1]).first)
+                            end
+                        end                   
+                    end
+                    array_position += 1
+                    byebug
+                end
+                
 
             else
                 #error con las coordenas enviadas

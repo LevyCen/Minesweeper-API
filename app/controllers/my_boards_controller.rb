@@ -36,7 +36,6 @@ class MyBoardsController < ApplicationController
             
             @squares_board = Square.where(board_id: @my_board.id)
 
-
             render json:@squares_board, status: :ok
 
         else
