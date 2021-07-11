@@ -64,7 +64,7 @@ class SquaresController < ApplicationController
                 # si no, las coordenadas son de una caja con valor = 0 ? si son. abrimos la caja 
                 # y abrimos las cajas de al rededor con valor mayor a 0,
                 a = SquaresService.new()
-                a.open_square_value_zero(my_boards_squares,params[:row],params[:column])
+                a.open_square_value_zero(my_boards_squares,params[:row],params[:column],params[:board_id])
 
             else
                 #error con las coordenas enviadas

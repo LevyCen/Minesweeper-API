@@ -20,12 +20,14 @@ class SquaresService
                 row = list_coordinates_arround[value][0]
                 column = list_coordinates_arround[value][1]
 
-                if square_value > 0
+                @square_value = square_value(my_boards_squares,row,column)
+
+                if @square_value > 0
                     # open box
                     if square_is_closed(my_boards_squares,row,column)
                         open_square(my_boards_squares,row,column)
                     end
-                elsif square_value == 0
+                elsif @square_value == 0
                     # save news box with value = 0
                     # if there are another boxes whit value = 0 then, apply the same procedure
                     if square_is_closed(my_boards_squares,row,column)
