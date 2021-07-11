@@ -1,14 +1,14 @@
 class SquaresService
 
-    # def initialize(my_boards_squares)
-    #     @boards_squares = my_boards_squares
-    # end
+    def initialize(my_boards_squares)
+        @boards_squares = my_boards_squares
+    end
 
     def open_square_value_zero(my_boards_squares,input_row,input_column,board_id)
 
         my_board = Board.find(board_id) 
         value_zero_list = Array.new()
-        value_zero_list.push(my_boards_squares.where(row: input_row, column: input_column).first)
+        value_zero_list.push(boards_squares.where(row: input_row, column: input_column).first)
         array_position = 0
         
         while array_position < value_zero_list.size do
@@ -22,15 +22,15 @@ class SquaresService
 
                 if square_value > 0
                     # open box
-                    if square_is_closed(my_boards_squares,row,column)
-                        open_square(my_boards_squares,row,column)
+                    if square_is_closed(boards_squares,row,column)
+                        open_square(boards_squares,row,column)
                     end
                 elsif square_value == 0
                     # save news box with value = 0
                     # if there are another boxes whit value = 0 then, apply the same procedure
-                    if square_is_closed(my_boards_squares,row,column)
-                        open_square(my_boards_squares,row,column)
-                        value_zero_list.push(my_boards_squares.where(row: row, column: column).first)
+                    if square_is_closed(boards_squares,row,column)
+                        open_square(boards_squares,row,column)
+                        value_zero_list.push(boards_squares.where(row: row, column: column).first)
                     end
                 end                   
             end

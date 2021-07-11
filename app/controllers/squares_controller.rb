@@ -13,10 +13,12 @@ class SquaresController < ApplicationController
     end
 
     #POST /openbox
-    def open_box
+    def open_square
         # recuperar el tablero
+
         my_boards_squares =  Square.where(board_id: params[:board_id])
         flag_is_ok = true
+        a = SquaresService.new(my_boards_squares)
         
         #validar las coordenadas son minas?
         if my_boards_squares.where(row: params[:row], column: params[:column]).first.mine
@@ -57,14 +59,14 @@ class SquaresController < ApplicationController
             elsif square_value > 0
                 # si no, las coordenadas son de una caja con valor > a 0 ? si son. abrimos la caja
                 # = SquaresService(my_board)
-                a = SquaresService.new()
+                # a = SquaresService.new()
                 a.open_square(my_boards_squares,params[:row],params[:column])
 
             elsif square_value == 0
                 # si no, las coordenadas son de una caja con valor = 0 ? si son. abrimos la caja 
                 # y abrimos las cajas de al rededor con valor mayor a 0,
-                a = SquaresService.new()
-                a.open_square_value_zero(my_boards_squares,params[:row],params[:column])
+                # a = SquaresService.new()
+                a.open_square_value_zero(my_boards_squares,params[:row],params[:column],board_id: params[:board_id])
 
             else
                 #error con las coordenas enviadas
