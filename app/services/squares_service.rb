@@ -47,7 +47,7 @@ class SquaresService
         return @board_squares
     end
 
-    def game_is_finised
+    def game_is_finised?
         if @board_squares.where(mine: false, open: false).empty?
             return true
         else

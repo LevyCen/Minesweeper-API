@@ -40,10 +40,8 @@ class SquaresController < ApplicationController
         flag_is_ok = true
         
         
-        #validar las coordenadas son minas?
         if @my_game_board.square_is_mine?(row,column)
-            # If is mine then game over
-            # @my_board = Board.find(params[:board_id])   delete
+            # If it is mine then game over
 
             if @my_board.destroy
                 render json: {
@@ -58,12 +56,9 @@ class SquaresController < ApplicationController
 
         else
             # si no son minas, continuamos
-            
             square_value = @my_game_board.get_square_value(row, column)
 
             if @my_game_board.square_is_open?(row, column)
-                # las coordenadas son de una caja abierta? si son. entonces notificar caja abierta
-                
                 return render json: {
                     status: 'fail',
                     message: 'box was open',
@@ -72,15 +67,13 @@ class SquaresController < ApplicationController
                 flag_is_ok = false
                 
             else
-                # si no, las coordenadas son de una caja con valor > a 0 ? si son. abrimos la caja
                 @my_game_board.open_square(row,column)
             end
 
 
             if flag_is_ok
-                # se evalua si todas las que no son minas ya están abiertas
 
-                if @my_game_board.game_is_finised
+                if @my_game_board.game_is_finised?
                     
 
                     if @my_board.destroy

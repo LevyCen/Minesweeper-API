@@ -52,9 +52,9 @@ Examples to consume the REST API
 	{"status":"successful","message":"all user","data":[{"id":1,"email":"levycen.d@gmail.com","name":"Levy Cen","auth_token":"xxxxxxxxx","created_at":"2021-07-08T03:16:02.656Z","updated_at":"2021-07-08T03:16:02.656Z"}]}
 
 ## New game
-`POST /newgame`
+`POST /boards`
 
-	curl -i -H 'Accept: application/json' -d 'name=Tablero&height=3&width=3&enabled=true&mines=3&user_id=2' http://fast-scrubland-04933.herokuapp.com/newgame
+	curl -i -H 'Accept: application/json' -d 'name=Tablero&height=3&width=3&enabled=true&mines=3&user_id=2' http://fast-scrubland-04933.herokuapp.com/myboard/new
 
 ### Response
 
@@ -67,7 +67,7 @@ Examples to consume the REST API
 	[{"id":10,"row":0,"column":0,"value":1,"mine":false,"open":false,"board_id":2,"created_at":"2021-07-08T04:16:41.479Z","updated_at":"2021-07-08T04:16:41.585Z"},... etc etc
 
 ## Show my games
-`GET /myboards/{user_id}`
+`GET /boards/all/{id}`
 
 	curl -i -H 'Accept: application/json' http://fast-scrubland-04933.herokuapp.com/myboards/2
 
