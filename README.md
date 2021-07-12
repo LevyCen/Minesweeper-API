@@ -81,7 +81,7 @@ Examples to consume the REST API
     Vary: Accept
     [{"id":2,"name":"Tablero","height":3,"width":3,"enabled":true,"mines":3,"user_id":2,"created_at":"2021-07-08T04:16:41.443Z","updated_at":"2021-07-08T04:16:41.443Z"}]
 
-## Open a box from board
+## Open a square from a board
 `POST /square/open`
 
 	curl -i -H 'Accept: application/json' -d 'row=0&column=0&board_id=2' http://fast-scrubland-04933.herokuapp.com/square/open
