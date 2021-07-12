@@ -1,10 +1,8 @@
-require 'byebug'
-
 class SquaresController < ApplicationController
 
-    # rescue_from Exception do |e|
-    #     render json: {error: e.message}, status: :internal_server_error
-    # end
+    rescue_from Exception do |e|
+        render json: {error: e.message}, status: :internal_server_error
+    end
   
     rescue_from ActiveRecord::RecordInvalid do |e|
         render json: {error: e.message}, status: :unprocessable_entity
@@ -14,9 +12,9 @@ class SquaresController < ApplicationController
         render json: {error: e.message}, status: :not_found
     end
 
-    #POST /openbox
+    #POST /square/open
     def open_square
-        # recuperar el tablero
+        # get board
 
         @my_board = Board.find(params[:board_id])
         @my_boards_squares =  Square.where(board_id: params[:board_id])

@@ -19,10 +19,6 @@ class SquaresService
         return true
     end
 
-    # def set_square_open(input_row, input_column)
-    #     @board_squares.where(row: input_row, column: input_column).first.update({"open"=>true})
-    # end
-
     def square_is_open?(input_row, input_column)
         if @board_squares.find_by(row: input_row, column: input_column).open
             return true
@@ -47,17 +43,9 @@ class SquaresService
         return @board_squares.find_by(row: input_row, column: input_column).mine
     end
 
-
     def get_squares
         return @board_squares
     end
-
-    def save_squares
-        for value in 0..@board_squares.size-1 do
-            @board_squares[value].save
-        end
-    end
-
 
     def game_is_finised
         if @board_squares.where(mine: false, open: false).empty?
