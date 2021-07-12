@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   delete '/boards/:id', to: 'boards#destroy'
   
   post 'square/open', to: 'squares#open_square'
+
+  get '/health', to: 'health#health'
   
 end
