@@ -3,7 +3,7 @@
 This is a REST API for the minesweeper game 
 
 ## Software version
-* Ruby version ruby 2.7.1p83
+* Ruby version 2.7.1p83
 * Rails version 6.1.4
 
 ## Functionalities
@@ -98,3 +98,4 @@ Get status about all boxes from board
     Vary: Accept
 
     {"status":"continue","message":"nice continue playing","data":[{"id":10,"row":0,"column":0,"value":1,"mine":false,"open":true,"board_id":2,"created_at":"2021-07-08T04:16:41.479Z","updated_at":"2021-07-08T04:26:18.055Z"},{"id":11,"row":0,"column":1,"value":0,"mine":true,"open":false,"board_id":2,"created_at":"2021-07-08T04:16:41.487Z","updated_at":"2021-07-08T04:16:41.559Z"},{"id":12,"row":0,"column":2,"value":0,"mine":true,"open":false,"board_id":2,"created_at":"2021-07-08T04:16:41.494Z","updated_at":"2021-07-08T04:16:41.551Z"},{"id":13,"row":1,"column":0,"value":2,"mine":false,"open":false,"board_id":2,"created_at":"2021-07-08T04:16:41.502Z","updated_at":"2021-07-08T04:16:41.595Z"},{"id":14,"row":1,"column":1,"value":3,"mine":false,"open":false,"board_id":2,"created_at":"2021-07-08T04:16:41.511Z","updated_at":"2021-07-08T04:16:41.607Z"},{"id":15,"row":1,"column":2,"value":3,"mine":false,"open":false,"board_id":2,"created_at":"2021-07-08T04:16:41.518Z","updated_at":"2021-07-08T04:16:41.615Z"},{"id":16,"row":2,"column":0,"value":1,"mine":false,"open":false,"board_id":2,"created_at":"2021-07-08T04:16:41.526Z","updated_at":"2021-07-08T04:16:41.623Z"},{"id":17,"row":2,"column":1,"value":0,"mine":true,"open":false,"board_id":2,"created_at":"2021-07-08T04:16:41.533Z","updated_at":"2021-07-08T04:16:41.566Z"},{"id":18,"row":2,"column":2,"value":1,"mine":false,"open":false,"board_id":2,"created_at":"2021-07-08T04:16:41.539Z","updated_at":"2021-07-08T04:16:41.633Z"}]}
+
